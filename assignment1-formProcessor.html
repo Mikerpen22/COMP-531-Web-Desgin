@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<style>
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		font-family: verdana;
+	}
+	th, td {				/* style individual table cells & header cells */
+		border: 1px solid;
+		text-align: left;
+		padding: 5px;	}
+	tr:nth-child(even) {
+		background-color: #FFDCDC;
+	}
+</style>
+</head>
+
+<body onload="extract_query_parameter()">
+
+<h1>Input received: </h1>
+	
+<table id="queryParamsTable">
+	<tr>
+		<th scope="row">Account name</th>
+			<td id="accntName">Closed</td>
+	</tr>
+
+	<tr>
+		<th scope="row">Email</th>
+			<td id="emailAddress">Closed</td>
+	</tr>
+
+	<tr>
+		<th scope="row">Phone number</th>
+			<td id="phone">Closed</td>
+	</tr>
+
+	<tr>
+		<th scope="row">Date of Birth</th>
+			<td id="dateOfBirth">Closed</td>
+	</tr>
+
+	<tr>
+		<th scope="row">Zip code</th>
+			<td id="zipCode">Closed</td>
+	</tr>
+	
+	<tr>
+		<th scope="row">Password</th>
+			<td id="password">Closed</td>
+	</tr>
+
+	<tr>
+		<th scope="row">Re-entered Password</th>
+			<td id="passwordConfirmation">Closed</td>
+	</tr>
+
+	<tr>
+		<th scope="row">Submitted Time</th>
+			<td id="timeStamp">Closed</td>
+	</tr>
+	</table>
+
+
+<script type="text/javascript">
+	function extract_query_parameter() {
+	    var queryStr = window.location.search;	// Gives the url string after the ?
+	    const queryParam = new URLSearchParams(queryStr);
+	    var queryParamItr = queryParam.entries();	// Returns iterable key value pair for params
+	    
+	    for(var query of queryParamItr){
+	    	// Put the value in the table
+	    	if(query[0] == "timeStamp"){
+	    		dateObj = new Date(+query[1]);	// CAUTION! query[1] is the unix time "string", +query[1] converts to int
+	    		console.log(query[1]);
+	    		console.log(dateObj);
+	    		document.getElementById(query[0]).innerHTML = dateObj.toString();
+	    	}
+	    	else if(query[0] == "password" || query[0] == "passwordConfirmation"){
+	    		var maskedPassword = "";
+	    		for(var i = 0; i < query[1].length; i++){
+	    			maskedPassword += "*";
+	    		}
+	    		console.log(maskedPassword);
+	    		document.getElementById(query[0]).innerHTML = maskedPassword;
+	    	}
+	    	else{
+	    		document.getElementById(query[0]).innerHTML = query[1];
+	    	}
+	    	
+	    }
+
+	}
+</script>
+
+</body>
+
+</html>
