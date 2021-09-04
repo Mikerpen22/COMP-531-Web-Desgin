@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<! CSS style>
+	<style>	
+		div.form{
+		    display: block;
+		    text-align: left;		<!You can change how the form aligns here>
+		}
+		form
+		{
+		    display: inline-block;
+		    margin-left: auto;
+		    margin-right: auto;
+		    text-align: left;
+		}			
+	</style>
+
+</head>
+
+<p style="font-family:verdana; font-size: 40px; font-style:bold" align="center">
+	Nerd Land	
+</p>
+
+<body>
+	<div class="form">
+		<form align="right" method="GET" action="" id="inputForm" onsubmit="order_receiver()">
+			<label for="accntName">Account name: </label></br>
+			<input type="text" name="accntName" id="name" placeholder="your account name"required="Please choose an account name"></br></br>
+			
+			<label for="emailAddress">Email address: </label></br>
+			<input type="email" name="emailAddress" id="emailAddress" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}" placeholder="Email address: x@y.z" required="Please enter a valid email address"></br></br>
+			
+			<label for="phone">Phone Number: 123-123-1234: </label></br>
+			<input type="tel" name="phone" id="phone" placeholder="123-123-1234"pattern="[1-9]{3}-[0-9]{3}-[0-9]{4}" required="Please provide a valid phone number"> </br></br>
+			
+			<label for="dateOfBirth">Date of birth: mm-dd-yyyy: </label></br>
+			<input type="date" name="dateOfBirth" id="dateOfBirth" max="2003-01-01"placeholder="mm-dd-yyyy" required="Please choose your date of birth"> </br></br>
+
+			<label for="size">Pizza size: </label></br>
+				<label for="size_1">Large</label>
+				<input type="radio" name="size_1" id="size_1" value="Large"> 
+				
+				<label for="size_2">Medium</label>
+				<input type="radio" name="size_2" id="size_2" value="Medium">
+				
+				<label for="size_3">Small</label><br/></br>
+				<input type="radio" name="size_3" id="size_3" value="Small">
+			
+			<label for="toppings">Pizza Toppings</label></br>
+				<label for="toppings_1">Sausage</label>
+				<input type="checkbox" name="toppings_1" id="toppings_1" value="Sausage">
+				
+				<label for="toppings_2">Pepperoni</label>
+				<input type="checkbox" name="toppings_2" id="toppings_2" value=Pepperoni">
+
+				<label for="toppings_3">Olives</label>
+				<input type="checkbox" name="toppings_3" id="toppings_3" value="Olives">
+				
+				<label for="toppings_4">Anchovies</label>	
+				<input type="checkbox" name="toppings_4" id="toppings_4" value=Anchovies">
+				
+				<label for="toppings_5">Onions</label></br></br>
+				<input type="checkbox" name="toppings_5" id="toppings_5" value="Onions">
+				
+			<input type="submit" value="Place order">
+			<input type="button" value="Clear" onclick="clear_fields()" >
+		</form>
+	</div>
+</body>
+
+
+
+
+
+
+</html>
