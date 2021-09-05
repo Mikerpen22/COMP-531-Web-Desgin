@@ -2,30 +2,131 @@
 <html>
 
 <head>
+	<meta name="author" content="Michael Shih">
+	<meta charset="utf-8">
+
 	<!--CSS style-->
 	<style>	
+		*,
+		*::before,						/* Apply this rule to all elements, all ::before pseudo-elements and all ::after */pseudo-elements”.
+		*::after{
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+		}
+
+		body{
+			height: 100vh;
+			display: grid;
+			justify-content: center;
+			align-items: center;
+			background-color: #F9F2F6;
+			background-image: url("https://i.stack.imgur.com/1Tzky.png");
+  			background-position: auto;
+  			background-size: 100% 100%;
+  			background-repeat: no-repeat;
+		}
 		div.form{
+			/*width: 20rem;
+			height: 2rem;*/
+			position: relative;
 		    display: block;
-		    text-align: left;		/*You can change how the form aligns here*/
+		    /*text-align: center;*/		/*You can change how the form aligns here*/
 		}
 		form
 		{
-		    display: inline-block;
+		    /*display: inline-block;*/
 		    margin-left: auto;
 		    margin-right: auto;
 		    text-align: left;
 		}
-		input[type="text"]{font-family:courier new;}
+		input{
+			/*position:  relative;*/
+			/*top: 0;
+			left: 0;*/
+			Width: 100%;
+			height: 100%;
+			border-top-style: hidden;
+  			border-right-style: hidden;
+  			border-left-style: hidden;
+  			border-bottom-style: groove;
+			font-family:verdana;
+			padding: 5px;
+			border-radius: 1px;
+  			box-shadow: 0 0 15px 4px rgba(250, 250, 255, 1);
+		}
+		input:hover{
+			border-color: #60DDFF;
+		}
+		input:focus{
+			border-color: #FFBA52;
+			box-shadow: 0 0 20px rgba(0,0,0,0.15);
+		}
+		input[type=submit]{
+			background: transparent;
+			background-color: #52B7FF;
+			color: black;
+			height: 2rem;
+			width: 7.95rem;
+			border-radius: 20px;
+			font-style: bold;
+			font-weight: 500;
+			box-shadow: 0 0 15px 4px rgba(100, 250, 255, 1);
+			cursor: pointer;
+			background-image: linear-gradient(0,#5295FF, #5295FF);
+			background-size: 0;
+			transition: .8s;
+			background-repeat: no-repeat;
+		}
+		input[type=submit]:hover{
+			background-color: #0096FF;
+			background-size: 100%;
+			color: white;
+		}
+		
+		input[type=button]{
+			background: transparent;
+			background-color: #FF7B9C;
+			color: black;
+			height: 2rem;
+			width: 7.95rem;
+			border-radius: 20px;
+			font-style: bold;
+			font-weight: 500;
+			box-shadow: 0 0 3px 3px rgba(250, 200, 200, 1);
+			cursor: pointer;
+			background-image: linear-gradient(0,#FF3F6E, #FF3F6E);
+			background-size: 0;
+			transition: .8s;
+			background-repeat: no-repeat;
+		}
+		input[type=button]:hover{
+			background-color: #FF3F6E;
+			background-size: 100%;
+			color: white;
+		}
 
 		/*Make a class for all labels to style it*/
 		.label_class{
-			font-family: courier new;
+			font-family: verdana;
+			position: relative;
+			left: 0.1rem;
+			/*top: 1.5rem;*/
+			/*padding: 0 0.5rem;*/
+			color: black;
 		}
+
+		.no-outline:focus{
+			outline: none;
+		}
+
+
 	</style>
 
 </head>
 
-<p style="font-family:courier new; font-size: 40px; font-style:bold" align="center">
+
+<p style="font-family:verdana; font-size: 40px; font-style:bold; color: black;" align="center">
 	Nerd Land	
 </p>
 
@@ -33,25 +134,25 @@
 	<div class="form">
 		<form align="right" method="GET" id="inputForm" form_receiver="assignment1-formProcessor.html" onsubmit="form_checker()">
 			<label for="accntName" class="label_class">Account name: </label></br>
-			<input type="text" name="accntName" id="accntName" pattern="[A-Za-z]{1}[a-zA-Z0-9]*"placeholder="your account name"required="Please choose an account name"></br></br>
+			<input type="text" class="no-outline" name="accntName" id="accntName" pattern="[A-Za-z]{1}[a-zA-Z0-9]*"placeholder="your account name"required="Please choose an account name" title="Account name should only starts with a letter along with alphanumeric characters"></br></br>
 			
 			<label for="emailAddress" class="label_class">Email address: </label></br>
-			<input type="email" name="emailAddress" id="emailAddress" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}" placeholder="Email address: x@y.z" required="Please enter a valid email address"></br></br>
+			<input type="email" class="no-outline" name="emailAddress" id="emailAddress" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}" placeholder="Email address: x@y.co" required="Please enter a valid email address"></br></br>
 			
 			<label for="phone" class="label_class">Phone Number: 123-123-1234: </label></br>
-			<input type="tel" name="phone" id="phone" placeholder="123-123-1234"pattern="[1-9]{3}-[0-9]{3}-[0-9]{4}" required="Please provide a valid phone number with format 123-123-1234"> </br></br>
+			<input type="tel" class="no-outline" name="phone" id="phone" placeholder="123-123-1234"pattern="[1-9]{3}-[0-9]{3}-[0-9]{4}" required="Please provide a valid phone number" title="Phone number should have format 123-123-1234"> </br></br>
 			
 			<label for="dateOfBirth" class="label_class">Date of birth: mm-dd-yyyy: </label></br>
-			<input type="date" name="dateOfBirth" id="dateOfBirth" placeholder="mm-dd-yyyy" required="Please choose your date of birth"> </br></br>
+			<input type="date" class="no-outline" name="dateOfBirth" id="dateOfBirth" placeholder="mm-dd-yyyy" required="Please choose your date of birth" title="Please enter your date of birth in the format of mm-dd-yyyy"> </br></br>
 
 			<label for="zipCode" class="label_class">Zip code: </label></br>
-			<input type="text" name="zipCode" id="zipCode" placeholder="55688"pattern="[0-9]{5}(?:-[0-9]{4})?" required="Please provide a valid zip code"> </br></br>
+			<input type="text" class="no-outline" name="zipCode" id="zipCode" placeholder="55688"pattern="[0-9]{5}(?:-[0-9]{4})?" required="Please provide a valid zip code" title="Zip code should have 5 digits, format with 9 digits concatenated with a dash is also acceptable"> </br></br>
 
 			<label for="password" class="label_class">Password: </label></br>
-			<input type="password" name="password" id="password" placeholder=""pattern="[\S]{6,}" required="Please choose a password with at least 6 characters, no space allowed"> </br></br>
+			<input type="password" class="no-outline" name="password" id="password" placeholder="" pattern="[\S]{6,}" required="Please choose a password with at least 6 characters, no space allowed" title="Password should contain at least 6 characters"> </br></br>
 
 			<label for="passwordConfirmation" class="label_class">Password confirmation: </label></br>
-			<input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="******"pattern="[\S]*" required="Please re-enter the same password"> </br></br>
+			<input type="password" class="no-outline" name="passwordConfirmation" id="passwordConfirmation" placeholder=""pattern="[\S]*" required="Please re-enter the same password" title="Confirm your password"> </br></br>
 			
 			<input type="hidden" name="timeStamp" id="timeStamp"> </br></br>	
 
@@ -88,7 +189,9 @@
 		console.log("days since birth:", daysSinceBirth);
 	}
 	
-
+	function clear_fields(){
+	document.getElementById("inputForm").reset();
+	}
 
 </script>
 

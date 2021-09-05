@@ -2,64 +2,92 @@
 
 <html>
 <head>
-<style>
-	table {
-		width: 100%;
-		border-collapse: collapse;
-		font-family: verdana;
-	}
-	th, td {				/* style individual table cells & header cells */
-		border: 1px solid;
-		text-align: left;
-		padding: 5px;	}
-	tr:nth-child(even) {
-		background-color: #FFDCDC;
-	}
-</style>
+	<meta name="author" content="Michael Shih">
+	<meta charset="utf-8">
+
+	<style>
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			font-family: verdana;
+		}
+		th, td {				/* style individual table cells & header cells */
+			border: 1px solid;
+			text-align: left;
+			padding: 5px;	}
+		/*tr:nth-child(even) {
+			background-color: #FFDCDC;
+		}*/
+		.styled-table{
+			background-color: #373737;
+			color: white;
+			border-collapse: collapse;
+			margin: 25px 0;
+			font-size: 1em;
+			min-width: 200;
+			box-shadow: 0 0 20px rgba(0,0,0,0.15);
+			cursor: pointer;
+
+		}
+
+		.styled-rows{
+			background-image: linear-gradient(0,#121212, #121212);
+			background-size: 0;
+			transition: .8s;
+			background-repeat: no-repeat;
+			transition: all 0.2s easeout;
+		}
+		.styled-rows:hover{
+			background-color:#121212;
+			background-size: 100%;
+			height: 45px;
+			font-size: 24px;
+		}
+	</style>
 </head>
 
 <body onload="extract_query_parameter()">
 
 <h1>Input received: </h1>
 	
-<table id="queryParamsTable">
-	<tr>
-		<th scope="row">Account name</th>
+<table id="queryParamsTable" class="styled-table">
+	<tr class="styled-rows">
+		<th scope="row" style="width: 50%;">Account name</th>
 			<td id="accntName">Closed</td>
 	</tr>
 
-	<tr>
-		<th scope="row">Email</th>
+	<tr class="styled-rows">
+		<th scope="row" style="width: 50%;">Email</th>
 			<td id="emailAddress">Closed</td>
 	</tr>
 
-	<tr>
-		<th scope="row">Phone number</th>
+	<tr class="styled-rows">
+		<th scope="row" style="width: 50%;">Phone number</th>
 			<td id="phone">Closed</td>
 	</tr>
 
-	<tr>
-		<th scope="row">Date of Birth</th>
+	<tr class="styled-rows">
+		<th scope="row" style="width: 50%;">Date of Birth</th>
 			<td id="dateOfBirth">Closed</td>
 	</tr>
 
-	<tr>
-		<th scope="row">Zip code</th>
+	<tr class="styled-rows">
+		<th scope="row" style="width: 50%;">Zip code</th>
 			<td id="zipCode">Closed</td>
 	</tr>
 	
-	<tr>
-		<th scope="row">Password</th>
+	<tr class="styled-rows">
+		<th scope="row" style="width: 50%;">Password</th>
 			<td id="password">Closed</td>
 	</tr>
 
-	<tr>
-		<th scope="row">Re-entered Password</th>
+	<tr class="styled-rows">
+		<th scope="row" style="width: 50%;">Re-entered Password</th>
 			<td id="passwordConfirmation">Closed</td>
 	</tr>
 
-	<tr>
-		<th scope="row">Submitted Time</th>
+	<tr class="styled-rows">
+		<th scope="row" style="width: 50%;">Submitted Time</th>
 			<td id="timeStamp">Closed</td>
 	</tr>
 	</table>
@@ -90,9 +118,7 @@
 	    	else{
 	    		document.getElementById(query[0]).innerHTML = query[1];
 	    	}
-	    	
 	    }
-
 	}
 </script>
 
