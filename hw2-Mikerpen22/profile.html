@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile page</title>
+    <meta name="author" content="Min Hung Shih">
+    <link rel="stylesheet" href="style.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="profile.js"></script>
+</head>
+
+<body id="Profilepage">
+    <div class="container emp-profile">
+        <form method="post">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="https://i.imgur.com/x0mUPna.jpg?1" alt=""/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="profile-head">
+                                <h5>
+                                    Michael Shih
+                                </h5>
+                                <h6>
+                                    "He who has a why to live for can bear almost any how. ~ Friedrich Nietzsche"
+                                </h6>
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type=button class="profile-edit-btn" name="btnAddMore" onclick="inputChecker()">Update</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="profile-work">
+                        <p>Some links</p>
+                        <a href="main.html">Home Page</a><br/>
+                        <a href="https://github.com/Mikerpen22">Github Link</a><br/>
+                        <a href="https://www.linkedin.com/in/mh-shih">Linkedin Profile</a><br/>
+                        <p>SKILLS</p>
+                        <a href="">Data Engineer</a><br/>
+                        <a href="">Web learner</a><br/>
+                        
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="tab-content profile-tab" id="myTabContent">
+                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Display name:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" id="inputName" placeholder="Unable to change"><p>Michael</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Email address:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" id="inputEmail" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[A-Za-z]{2,}" placeholder="x@z.ab"><p id="p-email">ms200@rice.eu</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Phone number:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="tel" id="inputNumber" pattern="[1-9]{3}-[0-9]{3}-[0-9]{4}" title="Phone number should have format 123-123-1234"><p id="p-phone">123-123-1234</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Zip code:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="text" id="inputZip" pattern="[0-9]{5}(?:-[0-9]{4})?"><p id="p-zip">55688</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Password:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="password" id="inputPassword"><p id="p-password">******</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Password confirmation:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="password" id="inputPassword2"><p id="p-password2">******</p>
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Experience</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>Expert</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Hourly Rate</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>10$/hr</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Total Projects</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>230</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>English Level</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>Expert</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label>Availability</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p>6 months</p>
+                                        </div>
+                                    </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label>Your Bio</label><br/>
+                                    <p>Your detail description</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>           
+    </div>
+
+    <!-- Alert message if user inputs the wrong format -->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" id="alert" style="display: none;">
+        <strong id="alertMsg">Holy guacamole!</strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+    <!-- Inform user what are they changing from and to-->
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" id="inform" style="display: none;">
+        <strong id="changeMsg"></strong> 
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+</body>
+</html>
