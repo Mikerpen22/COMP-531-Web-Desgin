@@ -46,7 +46,10 @@ function toggleKey(whichKey, isPressed){
     else if(whichKey == "ArrowUp"){
         controller.top = isPressed;
     }
-    else if(whichKey == 0){         // Check if mouse left key is pressed 
+    else if(whichKey == 0 && blaster.y_pos <= 0){           // Check if mouse left key is pressed 
+        controller.fire = isPressed;                        // Also only allow re-fire after the previous blaster goes out of screen
+    }
+    else if(whichKey == 0 && blaster.y_pos == 360){
         controller.fire = isPressed;
     }
 }
