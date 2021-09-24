@@ -37,3 +37,21 @@
     left: 20px;
     top: 20px;
 }
+#gamelevel{
+    color: yellow;
+    font-size: 20px;
+    border-radius: 20px;
+    position: absolute;
+    left: 20px;
+    top: 50px;
+}
+
+#gameover{
+    /* background: white; */
+    color:tomato;
+    font-size: 40px;
+    position: absolute;
+    visibility: hidden;
+    top: 50%;
+    left: 50%;
+}

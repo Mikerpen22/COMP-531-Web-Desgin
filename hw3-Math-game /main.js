@@ -6,6 +6,8 @@ var BLASTER_SPEED = 10;
 var MAX_WIDTH = window.screen.width;
 var MAX_HEIGHT = window.screen.height;
 var score = 0;
+var gamelevel = 1;
+
 
 
 
@@ -62,7 +64,7 @@ function toggleKey(whichKey, isPressed){
 function checkCollision(){
     for(var i = 0; i < enemies.length; i++){
         if(intersects(enemies[i], blaster)){ 
-            
+            score += 100;
             // Select element and remove it from DOM & enemies array
             var element = document.getElementById(enemies[i].element);
             element.style.visibility = "hidden";
@@ -74,8 +76,7 @@ function checkCollision(){
             blaster.y_pos = -blaster.height;
         }
         else if(intersects(enemies[i], player)){
-            var element = document.getElementById(player.element);
-            element.style.visibility = "hidden";
+            gameOver();
         }
         // Also remove enemy if its out of screen
         else if(enemies[i].y_pos + enemies[i].height >= MAX_HEIGHT-145){
@@ -90,6 +91,15 @@ function checkCollision(){
 
 function intersects(obj1, obj2){
     return obj1.x_pos < obj2.x_pos + obj2.width && obj1.x_pos + obj1.width > obj2.x_pos && obj1.y_pos < obj2.y_pos + obj2.height && obj1.y_pos + obj1.height > obj2.y_pos 
+}
+
+function gameOver(){
+    var element = document.getElementById(player.element);
+    element.style.visibility = "hidden";
+    
+    element = document.getElementById("gameover");  // Show gameover msg
+    element.style.visibility = "visible";
+
 }
 
 function controlHandler(){
@@ -114,7 +124,6 @@ function controlHandler(){
         }
         else if (controller.right){
             player.x_pos += PLAYER_SPEED;
-            // console.log(player.x_pos);
         }
     }
     else if(player.y_pos + player.height >= screen.height){
@@ -167,7 +176,7 @@ function controlHandler(){
         if(enemies[i].x_pos < 10){
             enemies[i].x_pos = 10;
         }
-        if(enemies[i].x_pos + enemies[i].width > MAX_WIDTH){
+        if(enemies[i].x_pos + enemies[i].width > MAX_WIDTH-100){
             enemies[i].x_pos = MAX_WIDTH - enemies[i].width;
         }
     }
@@ -181,7 +190,8 @@ function showActors(){
         setPosition(enemies[i]);
     }
 
-    $("#score").innerHTML = "SCORE: " + score;
+    $("#score").html("SCORE: " + score);
+    $("#gamelevel").html("LEVEL: " + gamelevel);
 }
 
 function updatePos(){
@@ -191,8 +201,8 @@ function updatePos(){
 
     // Update enemies position
     for (var i = 0; i < enemies.length; i++){
-        enemies[i].y_pos += getRandomInt(5);
-        enemies[i].x_pos += getRandomInt(5) - 2;
+        enemies[i].y_pos += getRandomInt(10);
+        enemies[i].x_pos += getRandomInt(10) - 5;
     }
 
 }
@@ -202,7 +212,23 @@ function getRandomInt(max){
 }
 
 function createEnemies(){
-    if(getRandomInt(50) == 0){
+    
+    // Setting: increasing enemies amount based on current scores
+    var interval = 50;
+    if(score > 400){
+        gamelevel += 1;
+        interval -= 10;
+    }
+    else if(score > 1000){
+        interval -= 10;
+        gamelevel += 1;
+    }
+    else if(score > 1500){
+        interval = 10;
+        gamelevel += 1;
+    }
+
+    if(getRandomInt(interval) == 0){
         let elementStr = 'enemy' + getRandomInt(Number.MAX_SAFE_INTEGER);      // Name of element should not collide
         var enemy = createObj(elementStr, getRandomInt(window.screen.width), -40, 35, 35);
         
