@@ -9,8 +9,6 @@ var score = 0;
 var gamelevel = 1;
 
 
-
-
 function setPosition(actor){
     var e = document.getElementById(actor.element);
     e.style.left = actor.x_pos + 'px';
@@ -61,10 +59,21 @@ function toggleKey(whichKey, isPressed){
     }
 }
 
+function updateCookies(){
+    const d = new Date();
+    d.setTime(d.getTime() + (1*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = "score=" + score + ";" + expires + ";path=/; SameSite=None; Secure";
+    document.cookie = "level=" + gamelevel + ";" + expires + ";path=/; SameSite=None; Secure";
+}
+
+
 function checkCollision(){
     for(var i = 0; i < enemies.length; i++){
         if(intersects(enemies[i], blaster)){ 
             score += 100;
+            updateCookies();
+
             // Select element and remove it from DOM & enemies array
             var element = document.getElementById(enemies[i].element);
             element.style.visibility = "hidden";
@@ -99,6 +108,7 @@ function gameOver(){
     
     element = document.getElementById("gameover");  // Show gameover msg
     element.style.visibility = "visible";
+    console.log(document.cookie);
 
 }
 
@@ -218,14 +228,17 @@ function createEnemies(){
     if(score > 400){
         gamelevel += 1;
         interval -= 10;
+        updateCookies();
     }
     else if(score > 1000){
         interval -= 10;
         gamelevel += 1;
+        updateCookies();
     }
     else if(score > 1500){
         interval = 10;
         gamelevel += 1;
+        updateCookies();
     }
 
     if(getRandomInt(interval) == 0){
@@ -250,7 +263,6 @@ function gameLoop(){
         updatePos();
         controlHandler();
         checkCollision();
-        
         createEnemies();
         showActors();
         lastLoopRun = Date.now();
