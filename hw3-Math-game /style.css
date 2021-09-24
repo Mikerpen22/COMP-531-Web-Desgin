@@ -22,3 +22,18 @@
     height: 40px;
     position: absolute;
 }
+.enemy{
+    background: yellowgreen;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+}
+
+#score{
+    color: yellow;
+    font-size: 20px;
+    border-radius: 20px;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
